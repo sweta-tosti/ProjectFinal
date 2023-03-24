@@ -5,9 +5,13 @@ Register page
 {% endblock title%}
 
 {% block content %}
+<body class="text-center">
     <div class="container">
         <form method="POST" class="form-register" style="color: white;">
-            <img class="mb-4"src="code_tech.png">
+            <!-- Cross Site request forgery(CSRF)  -->
+            {{ form.hidden_tag()}}
+            <img class="mb-4"src="static/pic.png" alt="Code Tech">
+                
             <h1 class="h3 mb-3 font-weight-normal">
                 Please Create your account
             </h1>
@@ -22,8 +26,11 @@ Register page
             {{ form.password1(class="form-control", placeholder = "Password" ) }}    
 
             {{ form.password2.label() }} 
-            {{ form.password2(class="form-control", placeholder = "Confirm Password" ) }}    
+            {{ form.password2(class="form-control", placeholder = "Confirm Password" ) }}
+            <br>
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }} 
         </form>
-    </div>  
-    
+    </div>
+</body> 
+     
 {% endblock content%}
